@@ -15,6 +15,8 @@ class Search extends React.Component {
     this.props.functionCallFromParent(event.target.value);
   }
 
+  // TODO: fix this bc it erases when it shouldnt or.. factor out the "enter"
+  //  key to have mainstream functionality in sending expected request
   handleSubmit(event) {
     alert('Search Value' + this.state.value);
     event.preventDefault();

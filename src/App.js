@@ -20,6 +20,7 @@ class App extends Component {
   movieReq(title) {
     console.log(title);
     $.ajax({
+      // TODO: hardcoded once again, factor out later
       url: "http://www.omdbapi.com/?t=" + title + "&apikey=3b3549ce",
       type: "GET",
       success: data => {
