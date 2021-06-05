@@ -32,6 +32,9 @@ class App extends Component {
 
   }
 
+  // This allows the main class (App) to share and exchange information
+  // With the Search class... specifically it is setting the search bar to a 
+  // passed value
   setSearch = (search) => {
     console.log(search);
     this.setState({
@@ -41,25 +44,23 @@ class App extends Component {
 
   render() {
     return (
-
-
       <React.Fragment>
         <div>
+          {/* Simple button that sends the state of the searchbar to create the 
+          correct request */}
           <button type="submit" onClick={() => { this.movieReq(this.state.search_bar) }}>Search</button>
         </div>
         <div className="searchBar">
+          {/* Add the Search component to this App Bind use set search to bind 
+          the values and allow information exchange */}
           <Search functionCallFromParent={this.setSearch.bind(this)} />
         </div>
         <div>
           <p>info here lol</p>
         </div>
       </React.Fragment>
-
-
     )
-
   }
-
 }
 
 export default App;
