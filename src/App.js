@@ -89,9 +89,6 @@ class App extends Component {
           <Search functionCallFromParent={this.setSearch.bind(this)} />
         </div>
         <div>
-          <p>info here lol</p>
-        </div>
-        <div>
           <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
 
         </div>
