@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import * as $ from "jquery";
 import Search from "./Search";
+import MoviePreview from "./MoviePreview"
 
 class App extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       // TODO: this is hardcoded u idiot
       token: "3b3549ce",
-      s_info: {},
+      s_info: null,
       search_bar: ""
       // search_bar: "",
     }
@@ -21,7 +21,7 @@ class App extends Component {
     console.log(title);
     $.ajax({
       // TODO: hardcoded once again, factor out later
-      url: "http://www.omdbapi.com/?t=" + title + "&apikey=3b3549ce",
+      url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce",
       type: "GET",
       success: data => {
         console.log(data);
@@ -58,6 +58,10 @@ class App extends Component {
         </div>
         <div>
           <p>info here lol</p>
+        </div>
+        <div>
+          <MoviePreview ids={this.state.s_info} />
+
         </div>
       </React.Fragment>
     )
