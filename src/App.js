@@ -11,7 +11,10 @@ class App extends Component {
       // TODO: this is hardcoded u idiot
       token: "3b3549ce",
       s_info: null,
-      search_bar: ""
+      search_bar: "",
+      something: "",
+      titleInfo: null,
+      movieSelected: false
       // search_bar: "",
     }
 
@@ -30,8 +33,25 @@ class App extends Component {
         });
       }
     });
-
   }
+
+  getIdInfo(id) {
+    // console.log(title);
+    $.ajax({
+      // TODO: hardcoded once again, factor out later
+      url: "http://www.omdbapi.com/?i=" + id + "&apikey=3b3549ce",
+      type: "GET",
+      success: data => {
+        console.log(data);
+        this.setState({
+          titleInfo: data
+        });
+      }
+    });
+  }
+
+
+
 
   // This allows the main class (App) to share and exchange information
   // With the Search class... specifically it is setting the search bar to a 
@@ -41,6 +61,18 @@ class App extends Component {
     this.setState({
       search_bar: search
     });
+  }
+
+  // if this is called render page information
+  idCall = (imdbID) => {
+    console.log(imdbID);
+    this.setState({
+      something: imdbID
+    });
+    this.getIdInfo(imdbID);
+    console.log(this.state.titleInfo);
+    // this.setState
+
   }
 
   render() {
@@ -60,7 +92,7 @@ class App extends Component {
           <p>info here lol</p>
         </div>
         <div>
-          <MoviePreview ids={this.state.s_info} />
+          <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
 
         </div>
       </React.Fragment>

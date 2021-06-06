@@ -1,56 +1,67 @@
 import React from "react";
 
-// class MoviePreview extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { data: null };
-//   }
+class MoviePreview extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props.parentState);
+    this.state = {
+      data: this.props.parentState,
+      selectedtitle: null,
+    };
+    this.props.functionCallFromParent(this.state.selectedtitle);
 
-//   setData(data_parent) {
-//     console.log("data set");
-//     this.setState({
-//       data: data_parent
-//     });
-//   }
-
-
-const MoviePreview = props => {
-  if (props.ids != null) {
-    console.log(props.ids.Search);
   }
 
-  return (
-    <React.Fragment>
-      {props.ids && (
-        <table>
-          <tbody>
-            {props.ids.Search.map(id =>
-              <tr className="box" key={id.imdbID} >
-                <td className="track_name"  >
-                  <button>
-                    {id.Title}
-                  </button>
-                  <button>{id.Year}</button>
-                  <button>{id.imdbID}</button>
-                  <button>
-                    <img
-                      src={id.Poster}
-                      alt={id.imbdID}
-                    />
-                  </button>
-                  {/* {show_image(id.Poster, 100, 300, "img")} */}
+  // TODO: no longer supported fix later
+  componentWillReceiveProps(nextProps) {
+    this.setState({ data: nextProps.parentState });
+  }
 
-                  {/* {id.Poster} */}
+  setSelected(id) {
+    console.log(id);
+    this.setState({
+      selectedtitle: id
+    })
+    this.props.functionCallFromParent(id);
+  }
 
-                </td>
-              </tr>)
-            }
-          </tbody>
-        </table>
-      )
-      }
-    </React.Fragment>
-  );
+  render() {
+    return (
+      <React.Fragment>
+        {this.state.data && (
+          <table>
+            <tbody>
+              {this.state.data.Search.map(id =>
+                <tr className="box" key={id.imdbID} >
+                  <td className="track_name"  >
+                    <button id={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
+                      <div>
+                        <h1>
+                          {id.Title} -- {id.Year}
+                        </h1>
+                      </div>
+                      {id.imdbID}
+                      <div>
+                        <img
+                          src={id.Poster}
+                          alt={id.imbdID}
+                        />
+                      </div>
+                    </button>
+                    {/* {show_image(id.Poster, 100, 300, "img")} */}
+
+                    {/* {id.Poster} */}
+
+                  </td>
+                </tr>)
+              }
+            </tbody>
+          </table>
+        )
+        }
+      </React.Fragment>
+    );
+  }
 }
 
 
