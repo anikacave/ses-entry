@@ -1,6 +1,6 @@
 .square {
   width: 30%;
-  height: 800px;
+  height: width;
   border-radius: 0px 0px 0px 0px;
   border-style: none;
   border-width: 0 0 3px;
@@ -17,7 +17,7 @@
   width: 100%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 440px) {
 
   h1 {
     font-size: 8pt;

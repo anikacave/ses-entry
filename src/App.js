@@ -67,7 +67,7 @@ class App extends Component {
   idCall = (imdbID) => {
     console.log(imdbID);
     this.setState({
-      something: imdbID
+      something: imdbID,
     });
     this.getIdInfo(imdbID);
     console.log(this.state.titleInfo);
@@ -88,10 +88,11 @@ class App extends Component {
           the values and allow information exchange */}
           <Search functionCallFromParent={this.setSearch.bind(this)} />
         </div>
-        <div>
-          <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
+        {!this.state.movieSelected && (
+          <div>
+            <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
+          </div>)}
 
-        </div>
       </React.Fragment>
     )
   }
