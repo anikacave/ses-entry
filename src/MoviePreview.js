@@ -32,6 +32,12 @@ const MoviePreview = props => {
                   </button>
                   <button>{id.Year}</button>
                   <button>{id.imdbID}</button>
+                  <button>
+                    <img
+                      src={id.Poster}
+                      alt={id.imbdID}
+                    />
+                  </button>
                   {/* {show_image(id.Poster, 100, 300, "img")} */}
 
                   {/* {id.Poster} */}
