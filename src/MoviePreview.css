@@ -1,4 +1,42 @@
-.info-table {
+.square {
+  width: 30%;
+  height: 800px;
+  border-radius: 0px 0px 0px 0px;
+  border-style: none;
+  border-width: 0 0 3px;
+  padding: 10px 10px;
+  background-color: white;
+}
+
+.holder {
+  display: inline;
+  /* display: block; */
+}
+
+.img {
   width: 100%;
-  color: black;
+}
+
+@media (max-width: 1000px) {
+
+  h1 {
+    font-size: 8pt;
+    color: red;
+
+  }
+
+  .img {
+    width: 80%;
+  }
+
+  .square {
+    width: 50%;
+    height: 300px;
+    border-color: red;
+    border-radius: 0px 0px 0px 0px;
+    border-style: none;
+    border-width: 0 0 3px;
+    padding: 0px 0px;
+   }
+
 }

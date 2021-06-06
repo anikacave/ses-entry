@@ -1,4 +1,5 @@
 import React from "react";
+import "./MoviePreview.css"
 
 class MoviePreview extends React.Component {
   constructor(props) {
@@ -31,11 +32,11 @@ class MoviePreview extends React.Component {
         {this.state.data && (
           // <table>
           //   <tbody>
-          <div>
+          <div className="holder">
             {this.state.data.Search.map(id =>
               // <tr className="box" key={id.imdbID} >
               //   <td className="track_name"  >
-              <button id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
+              <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
                 <div>
                   <h1>
                     {id.Title} -- {id.Year}
@@ -43,7 +44,7 @@ class MoviePreview extends React.Component {
                 </div>
                 {id.imdbID}
                 <div>
-                  <img
+                  <img className="img"
                     src={id.Poster}
                     alt={id.imbdID}
                   />
