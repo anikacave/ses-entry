@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import * as $ from "jquery";
 import Search from "./Search";
 import MoviePreview from "./MoviePreview"
+import MovieDetails from "./MovieDetails"
 
 class App extends Component {
   constructor() {
@@ -27,6 +28,7 @@ class App extends Component {
       url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce",
       type: "GET",
       success: data => {
+        // TODO: error handling
         console.log(data);
         this.setState({
           s_info: data
@@ -42,9 +44,16 @@ class App extends Component {
       url: "http://www.omdbapi.com/?i=" + id + "&apikey=3b3549ce",
       type: "GET",
       success: data => {
-        console.log(data);
+        // TODO: some sort of error handling here for invalid responses
+        // however, there should not be a scenario where this makes it difficiult
+        console.log(data.Response);
+        if (data.Response === "True") {
+          this.setState({
+            movieSelected: true
+          })
+        }
         this.setState({
-          titleInfo: data
+          titleInfo: data,
         });
       }
     });
@@ -67,7 +76,7 @@ class App extends Component {
   idCall = (imdbID) => {
     console.log(imdbID);
     this.setState({
-      something: imdbID,
+      something: imdbID
     });
     this.getIdInfo(imdbID);
     console.log(this.state.titleInfo);
@@ -91,6 +100,10 @@ class App extends Component {
         {!this.state.movieSelected && (
           <div>
             <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
+          </div>)}
+        {this.state.movieSelected && (
+          <div>
+            <MovieDetails info={this.state.titleInfo} />
           </div>)}
 
       </React.Fragment>
