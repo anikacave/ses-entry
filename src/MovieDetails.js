@@ -5,7 +5,7 @@ class MovieDetails extends React.Component {
     super(props);
     this.state = {
       info: null
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,7 +31,7 @@ class MovieDetails extends React.Component {
             <p>Box Office: {this.state.info.BoxOffice}</p>
             {this.state.info.Ratings.map(site =>
               <p>{site.Source} : {site.Value}</p>)}
-            <button>Back To Results</button>
+            {/* <button>Back To Results</button> */}
           </React.Fragment>
         )}
       </React.Fragment>

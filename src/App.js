@@ -81,7 +81,12 @@ class App extends Component {
     this.getIdInfo(imdbID);
     console.log(this.state.titleInfo);
     // this.setState
+  }
 
+  backToSearch() {
+    this.setState({
+      movieSelected: false
+    })
   }
 
   render() {
@@ -95,6 +100,7 @@ class App extends Component {
         <div className="searchBar">
           {/* Add the Search component to this App Bind use set search to bind 
           the values and allow information exchange */}
+          {/* TODO: deal with searching while viewing a specific movie */}
           <Search functionCallFromParent={this.setSearch.bind(this)} />
         </div>
         {!this.state.movieSelected && (
@@ -104,6 +110,7 @@ class App extends Component {
         {this.state.movieSelected && (
           <div>
             <MovieDetails info={this.state.titleInfo} />
+            <button onClick={() => { this.backToSearch() }}>Back To Results</button>
           </div>)}
 
       </React.Fragment>
