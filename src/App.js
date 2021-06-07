@@ -93,7 +93,10 @@ class App extends Component {
     return (
       <React.Fragment>
         {!this.state.s_info && (
-          <h1>Movie Search</h1>
+          <React.Fragment>
+            <h1>Welcome to Movie Search!!</h1>
+            <h2>Search for your desired movie and click the poster for more information. If you have trouble finding information, please try to be specific regarding the title to narrow the result.</h2>
+          </React.Fragment>
         )}
         <div>
           {/* Simple button that sends the state of the searchbar to create the 
