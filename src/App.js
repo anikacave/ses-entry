@@ -16,7 +16,6 @@ class App extends Component {
       something: "",
       titleInfo: null,
       movieSelected: false
-      // search_bar: "",
     }
 
   }
@@ -31,7 +30,8 @@ class App extends Component {
         // TODO: error handling
         console.log(data);
         this.setState({
-          s_info: data
+          s_info: data,
+          movieSelected: false
         });
       }
     });
@@ -92,9 +92,13 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        {!this.state.s_info && (
+          <h1>Movie Search</h1>
+        )}
         <div>
           {/* Simple button that sends the state of the searchbar to create the 
           correct request */}
+          {/* HERE STATE */}
           <button type="submit" onClick={() => { this.movieReq(this.state.search_bar) }}>Search</button>
         </div>
         <div className="searchBar">
