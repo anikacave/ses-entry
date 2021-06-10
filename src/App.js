@@ -19,10 +19,10 @@ class App extends Component {
 
   }
   // TODO: factor this out into the search class.. where it belongs
-  movieReq(title) {
+  movieReq(title, page) {
     $.ajax({
       // TODO: hardcoded once again, factor out later
-      url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce",
+      url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce&page=1",
       type: "GET",
       success: data => {
         // TODO: error handling
@@ -76,10 +76,16 @@ class App extends Component {
     })
   }
 
+  // set state for access
   submitted = (bar) => {
     if (bar) {
       this.movieReq(bar);
     }
+
+  }
+
+  getPage = (page) => {
+
 
   }
 
@@ -102,7 +108,7 @@ class App extends Component {
           </div>
           {!this.state.movieSelected && (
             <div>
-              <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
+              <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} getPage={this.getPage.bind(this)} />
             </div>)}
           {this.state.movieSelected && (
             <div>

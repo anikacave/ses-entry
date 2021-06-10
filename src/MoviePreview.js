@@ -1,5 +1,6 @@
 import React from "react";
 import "./MoviePreview.css";
+import { BottomScrollListener } from 'react-bottom-scroll-listener';
 
 class MoviePreview extends React.Component {
   constructor(props) {
@@ -7,7 +8,9 @@ class MoviePreview extends React.Component {
     this.state = {
       data: this.props.parentState,
       selectedtitle: null,
+      page: 1
     };
+    this.props.getPage(this.state.page);
     this.props.functionCallFromParent(this.state.selectedtitle);
 
   }
@@ -22,6 +25,13 @@ class MoviePreview extends React.Component {
       selectedtitle: id
     })
     this.props.functionCallFromParent(id);
+  }
+
+  setPage() {
+    this.setState({
+      page: this.state.page + 1
+    })
+    this.props.getPage();
   }
 
   render() {
@@ -51,6 +61,7 @@ class MoviePreview extends React.Component {
               // </tr>)
             )
             }
+            <BottomScrollListener onBottom={this.setPage()} />;
           </div>
           //   </tbody>
           // </table>
