@@ -107,9 +107,9 @@ class App extends Component {
             {/* Simple button that sends the state of the searchbar to create the 
           correct request */}
             {/* HERE STATE */}
-            <div>
+            {/* <div>
               <button type="submit" onClick={() => { this.movieReq(this.state.search_bar) }}>Search</button>
-            </div>
+            </div> */}
             <div className="searchBar">
               {/* Add the Search component to this App Bind use set search to bind 
           the values and allow information exchange */}

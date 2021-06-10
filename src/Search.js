@@ -30,6 +30,7 @@ class Search extends React.Component {
       <form onSubmit={this.handleSubmit}>
         {/* SEARCH */}
         <input className="bar" type="text" placeholder="Search Movie Titles..." value={this.state.value} onChange={this.handleChange} />
+        <button onClick={this.handleSubmit}>Search</button>
 
       </form>
     );
