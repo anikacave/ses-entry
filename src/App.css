@@ -40,3 +40,9 @@ body {
     transform: rotate(360deg);
   }
 }
+
+
+.searchBar {
+  width: 80%;
+  align-items: center;
+}

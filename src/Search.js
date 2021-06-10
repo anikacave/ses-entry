@@ -6,6 +6,8 @@ class Search extends React.Component {
     this.state = { value: "" };
     this.props.functionCallFromParent(this.state.value);
     this.handleChange = this.handleChange.bind(this);
+    this.props.submitted(this.state.value);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -18,8 +20,9 @@ class Search extends React.Component {
   // TODO: fix this bc it erases when it shouldnt or.. factor out the "enter"
   //  key to have mainstream functionality in sending expected request
   handleSubmit(event) {
-    alert('Search Value' + this.state.value);
     event.preventDefault();
+    console.log(this.state.value);
+    this.props.submitted(this.state.value);
   }
 
   render() {
