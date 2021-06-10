@@ -1,3 +1,7 @@
+body {
+  font-family: Optima, sans-serif;
+}
+
 .square {
   width: 30%;
   height: width;
@@ -6,6 +10,7 @@
   border-width: 0 0 3px;
   padding: 10px 10px;
   background-color: white;
+  font-family: Optima, sans-serif;
 }
 
 .holder {
@@ -17,9 +22,9 @@
   width: 100%;
 }
 
-@media (max-width: 440px) {
+@media (max-width: 500px) {
 
-  h1 {
+  .mvd {
     font-size: 8pt;
     color: red;
 
@@ -32,6 +37,25 @@
   .square {
     width: 50%;
     height: 300px;
+    border-color: red;
+    border-radius: 0px 0px 0px 0px;
+    border-style: none;
+    border-width: 0 0 3px;
+    padding: 0px 0px;
+   }
+
+}
+
+@media (min-width: 1000px) {
+
+
+  .img {
+    width: 80%;
+  }
+
+  .square {
+    width: 25%;
+    height: 500px;
     border-color: red;
     border-radius: 0px 0px 0px 0px;
     border-style: none;

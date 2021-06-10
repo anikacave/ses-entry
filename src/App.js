@@ -92,33 +92,35 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        {!this.state.s_info && (
-          <React.Fragment>
-            <h1>Welcome to Movie Search!!</h1>
-            <h2>Search for your desired movie and click the poster for more information. If you have trouble finding information, please try to be specific regarding the title to narrow the result.</h2>
-          </React.Fragment>
-        )}
-        <div>
-          {/* Simple button that sends the state of the searchbar to create the 
+        <body>
+          {!this.state.s_info && (
+            <React.Fragment>
+              <h1>Welcome to Movie Search!!</h1>
+              <h2>Search for your desired movie and click the poster for more information. If you have trouble finding information, please try to be specific regarding the title to narrow the result.</h2>
+            </React.Fragment>
+          )}
+          <div>
+            {/* Simple button that sends the state of the searchbar to create the 
           correct request */}
-          {/* HERE STATE */}
-          <button type="submit" onClick={() => { this.movieReq(this.state.search_bar) }}>Search</button>
-        </div>
-        <div className="searchBar">
-          {/* Add the Search component to this App Bind use set search to bind 
+            {/* HERE STATE */}
+            <button type="submit" onClick={() => { this.movieReq(this.state.search_bar) }}>Search</button>
+          </div>
+          <div className="searchBar">
+            {/* Add the Search component to this App Bind use set search to bind 
           the values and allow information exchange */}
-          {/* TODO: deal with searching while viewing a specific movie */}
-          <Search functionCallFromParent={this.setSearch.bind(this)} />
-        </div>
-        {!this.state.movieSelected && (
-          <div>
-            <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
-          </div>)}
-        {this.state.movieSelected && (
-          <div>
-            <MovieDetails info={this.state.titleInfo} />
-            <button onClick={() => { this.backToSearch() }}>Back To Results</button>
-          </div>)}
+            {/* TODO: deal with searching while viewing a specific movie */}
+            <Search functionCallFromParent={this.setSearch.bind(this)} />
+          </div>
+          {!this.state.movieSelected && (
+            <div>
+              <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} />
+            </div>)}
+          {this.state.movieSelected && (
+            <div>
+              <MovieDetails info={this.state.titleInfo} />
+              <button onClick={() => { this.backToSearch() }}>Back To Results</button>
+            </div>)}
+        </body>
 
       </React.Fragment>
     )

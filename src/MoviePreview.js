@@ -1,5 +1,5 @@
 import React from "react";
-import "./MoviePreview.css"
+import "./MoviePreview.css";
 
 class MoviePreview extends React.Component {
   constructor(props) {
@@ -29,37 +29,37 @@ class MoviePreview extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.data && (
-          // <table>
-          //   <tbody>
-          <div className="holder">
-            {this.state.data.Search.map(id =>
-              // <tr className="box" key={id.imdbID} >
-              //   <td className="track_name"  >
-              <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
-                <div>
-                  <h1>
-                    {id.Title} -- {id.Year}
-                  </h1>
-                </div>
-                {id.imdbID}
-                <div>
-                  <img className="img"
-                    src={id.Poster}
-                    alt={id.imbdID}
-                  />
-                </div>
-              </button>
+        <body>
+          {this.state.data && (
+            // <table>
+            //   <tbody>
+            <div className="holder">
+              {this.state.data.Search.map(id =>
+                // <tr className="box" key={id.imdbID} >
+                //   <td className="track_name"  >
+                <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
+                  <div className="info">
+                    <h1 className="mvd">{id.Title} <br></br> {id.Year}</h1>
+                  </div>
+                  {id.imdbID}
+                  <div>
+                    <img className="img"
+                      src={id.Poster}
+                      alt={id.imbdID}
+                    />
+                  </div>
+                </button>
 
-              //   </td>
-              // </tr>)
-            )
-            }
-          </div>
-          //   </tbody>
-          // </table>
-        )
-        }
+                //   </td>
+                // </tr>)
+              )
+              }
+            </div>
+            //   </tbody>
+            // </table>
+          )
+          }
+        </body>
       </React.Fragment>
     );
   }

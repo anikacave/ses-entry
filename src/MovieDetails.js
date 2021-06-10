@@ -1,4 +1,5 @@
 import React from "react";
+import "./MovieDetails.css"
 
 class MovieDetails extends React.Component {
   constructor(props) {
@@ -21,17 +22,31 @@ class MovieDetails extends React.Component {
       <React.Fragment>
         {this.state.info && (
           <React.Fragment>
-            <h1>{this.state.info.Title} -- {this.state.info.Year}</h1>
-            <p>{this.state.info.Plot}</p>
-            <p>{this.state.info.Awards}</p>
-            <p>Directed By: {this.state.info.Director}</p>
-            <p>Written By: {this.state.info.Writer}</p>
-            <p>Rated: {this.state.info.Rated}</p>
-            <p>Genre: {this.state.info.Genre}</p>
-            <p>Box Office: {this.state.info.BoxOffice}</p>
-            {this.state.info.Ratings.map(site =>
-              <p>{site.Source} : {site.Value}</p>)}
-            {/* <button>Back To Results</button> */}
+            <div className="center">
+              <h1>{this.state.info.Title} -- {this.state.info.Year}</h1>
+            </div>
+            <div className="layout">
+              <div className="imgdiv">
+                <img className="dimg"
+                  src={this.state.info.Poster}
+                  alt={this.state.info.imbdID}
+                />
+              </div>
+              <div className="mdinfo">
+                <p>{this.state.info.Plot}</p>
+                <p>{this.state.info.Awards}</p>
+                <p>Directed By: {this.state.info.Director}</p>
+                <p>Written By: {this.state.info.Writer}</p>
+                <p>Rated: {this.state.info.Rated}</p>
+                <p>Released: {this.state.info.Released}</p>
+                <p>Genre: {this.state.info.Genre}</p>
+                <p>Box Office: {this.state.info.BoxOffice}</p>
+                <p>RATINGS:</p>
+                {this.state.info.Ratings.map(site =>
+                  <p>{site.Source} : {site.Value}</p>)}
+                <button>Back To Results</button>
+              </div>
+            </div>
           </React.Fragment>
         )}
       </React.Fragment>
