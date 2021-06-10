@@ -20,24 +20,27 @@ class App extends Component {
   }
   // TODO: factor this out into the search class.. where it belongs
   movieReq(title) {
-    console.log(title);
     $.ajax({
       // TODO: hardcoded once again, factor out later
       url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce",
       type: "GET",
       success: data => {
         // TODO: error handling
-        console.log(data);
-        this.setState({
-          s_info: data,
-          movieSelected: false
-        });
+        if (data.Response === "True") {
+          this.setState({
+            s_info: data,
+            movieSelected: false
+          });
+        }
+        else {
+          alert("Invalid Search: Try being more specific or checking your spelling")
+        }
+
       }
     });
   }
 
   getIdInfo(id) {
-    // console.log(title);
     $.ajax({
       // TODO: hardcoded once again, factor out later
       url: "http://www.omdbapi.com/?i=" + id + "&apikey=3b3549ce",
@@ -45,7 +48,6 @@ class App extends Component {
       success: data => {
         // TODO: some sort of error handling here for invalid responses
         // however, there should not be a scenario where this makes it difficiult
-        console.log(data.Response);
         if (data.Response === "True") {
           this.setState({
             movieSelected: true
@@ -61,12 +63,10 @@ class App extends Component {
 
   // if this is called render page information
   idCall = (imdbID) => {
-    console.log(imdbID);
     this.setState({
       something: imdbID
     });
     this.getIdInfo(imdbID);
-    console.log(this.state.titleInfo);
     // this.setState
   }
 
@@ -89,8 +89,10 @@ class App extends Component {
         <div>
           {!this.state.s_info && (
             <React.Fragment>
-              <h1>Welcome to Movie Search!!</h1>
-              <h2>Search for your desired movie and click the poster for more information. If you have trouble finding information, please try to be specific regarding the title to narrow the result.</h2>
+              <div className="intro">
+                <h1><u>Movie Search</u></h1>
+                <p>Search for your desired movie and click the poster for more information. If you have trouble finding information, please try to be specific regarding the title to narrow the result.</p>
+              </div>
             </React.Fragment>
           )}
           <div>

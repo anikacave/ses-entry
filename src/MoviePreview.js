@@ -4,7 +4,6 @@ import "./MoviePreview.css";
 class MoviePreview extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.parentState);
     this.state = {
       data: this.props.parentState,
       selectedtitle: null,
@@ -19,7 +18,6 @@ class MoviePreview extends React.Component {
   }
 
   setSelected(id) {
-    console.log(id);
     this.setState({
       selectedtitle: id
     })

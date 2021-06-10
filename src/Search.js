@@ -19,7 +19,6 @@ class Search extends React.Component {
   //  key to have mainstream functionality in sending expected request
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.value);
     this.props.submitted(this.state.value);
   }
 
