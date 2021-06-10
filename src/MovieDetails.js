@@ -43,7 +43,7 @@ class MovieDetails extends React.Component {
                 <p>Box Office: {this.state.info.BoxOffice}</p>
                 <p>RATINGS:</p>
                 {this.state.info.Ratings.map(site =>
-                  <p>{site.Source} : {site.Value}</p>)}
+                  <p key={site.Source}>{site.Source} : {site.Value}</p>)}
               </div>
             </div>
           </React.Fragment>

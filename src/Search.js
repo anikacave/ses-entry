@@ -1,20 +1,18 @@
 import React from "react";
+import "./Search.css"
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
-    this.props.functionCallFromParent(this.state.value);
-    this.handleChange = this.handleChange.bind(this);
     this.props.submitted(this.state.value);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     event.preventDefault();
     this.setState({ value: event.target.value });
-    this.props.functionCallFromParent(event.target.value);
   }
 
   // TODO: fix this bc it erases when it shouldnt or.. factor out the "enter"
@@ -27,10 +25,10 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="searchBar" onSubmit={this.handleSubmit}>
         {/* SEARCH */}
         <input className="bar" type="text" placeholder="Search Movie Titles..." value={this.state.value} onChange={this.handleChange} />
-        <button onClick={this.handleSubmit}>Search</button>
+        <button className="search" onClick={this.handleSubmit}>Search</button>
 
       </form>
     );

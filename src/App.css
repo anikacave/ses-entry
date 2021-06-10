@@ -46,3 +46,12 @@ body {
   width: 80%;
   align-items: center;
 }
+
+.backToResults {
+  font-family: Optima, sans-serif;
+  background-color: white;
+  border-style: none;
+  color: blue;
+  margin-left: 45%;
+
+}

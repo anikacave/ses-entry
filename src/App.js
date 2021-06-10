@@ -12,7 +12,6 @@ class App extends Component {
       // TODO: this is hardcoded u idiot
       token: "3b3549ce",
       s_info: null,
-      search_bar: "",
       something: "",
       titleInfo: null,
       movieSelected: false
@@ -60,14 +59,6 @@ class App extends Component {
   }
 
 
-  setSearch = (search) => {
-    console.log(search);
-    this.setState({
-      search_bar: search
-    });
-  }
-
-
   // if this is called render page information
   idCall = (imdbID) => {
     console.log(imdbID);
@@ -96,7 +87,6 @@ class App extends Component {
     return (
       <React.Fragment >
         <div>
-          {/* {window.addEventListener('keydown', function (e) { if (e.keyIdentifier === 'U+000A' || e.keyIdentifier === 'Enter' || e.keyCode === 13) { if (e.target.nodeName === 'INPUT' && e.target.type === 'text') { e.preventDefault(); return false; } } }, true)} */}
           {!this.state.s_info && (
             <React.Fragment>
               <h1>Welcome to Movie Search!!</h1>
@@ -104,17 +94,8 @@ class App extends Component {
             </React.Fragment>
           )}
           <div>
-            {/* Simple button that sends the state of the searchbar to create the 
-          correct request */}
-            {/* HERE STATE */}
-            {/* <div>
-              <button type="submit" onClick={() => { this.movieReq(this.state.search_bar) }}>Search</button>
-            </div> */}
             <div className="searchBar">
-              {/* Add the Search component to this App Bind use set search to bind 
-          the values and allow information exchange */}
-              {/* TODO: deal with searching while viewing a specific movie */}
-              <Search functionCallFromParent={this.setSearch.bind(this)} submitted={this.submitted.bind(this)} />
+              <Search submitted={this.submitted.bind(this)} />
             </div>
           </div>
           {!this.state.movieSelected && (
@@ -124,7 +105,9 @@ class App extends Component {
           {this.state.movieSelected && (
             <div>
               <MovieDetails info={this.state.titleInfo} />
-              <button onClick={() => { this.backToSearch() }}>Back To Results</button>
+              <div className="resultss">
+                <button className="backToResults" onClick={() => { this.backToSearch() }}><u>Back To Results</u></button>
+              </div>
             </div>)}
         </div>
       </React.Fragment >

@@ -29,37 +29,35 @@ class MoviePreview extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <body>
-          {this.state.data && (
-            // <table>
-            //   <tbody>
-            <div className="holder">
-              {this.state.data.Search.map(id =>
-                // <tr className="box" key={id.imdbID} >
-                //   <td className="track_name"  >
-                <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
-                  <div className="info">
-                    <h1 className="mvd">{id.Title} <br></br> {id.Year}</h1>
-                  </div>
-                  {id.imdbID}
-                  <div>
-                    <img className="img"
-                      src={id.Poster}
-                      alt={id.imbdID}
-                    />
-                  </div>
-                </button>
+        {this.state.data && (
+          // <table>
+          //   <tbody>
+          <div className="holder">
+            {this.state.data.Search.map(id =>
+              // <tr className="box" key={id.imdbID} >
+              //   <td className="track_name"  >
+              <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
+                <div className="info">
+                  <h1 className="mvd">{id.Title} <br></br> {id.Year}</h1>
+                </div>
+                {id.imdbID}
+                <div>
+                  <img className="img"
+                    src={id.Poster}
+                    alt={id.imbdID}
+                  />
+                </div>
+              </button>
 
-                //   </td>
-                // </tr>)
-              )
-              }
-            </div>
-            //   </tbody>
-            // </table>
-          )
-          }
-        </body>
+              //   </td>
+              // </tr>)
+            )
+            }
+          </div>
+          //   </tbody>
+          // </table>
+        )
+        }
       </React.Fragment>
     );
   }

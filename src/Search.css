@@ -1,8 +1,26 @@
 .bar {
-  width: 80%;
+  width: 70%;
   height: 30%;
-  margin-right: 10%;
-  margin-left: 20%;
   font-size: 12pt;
+  font-family: Optima, sans-serif;
   padding: 1%;
+  /* flex: 1; */
+}
+
+.search {
+  height: 30%;
+  padding: 1%;
+  font-family: Optima, sans-serif;
+  /* flex: 1; */
+  font-size: 12pt;
+}
+
+.searchBar {
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  justify-content: 'center';
+  align-items: 'center';
+  width: 100%;
 }
