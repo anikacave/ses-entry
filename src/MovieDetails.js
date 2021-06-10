@@ -44,7 +44,6 @@ class MovieDetails extends React.Component {
                 <p>RATINGS:</p>
                 {this.state.info.Ratings.map(site =>
                   <p>{site.Source} : {site.Value}</p>)}
-                <button>Back To Results</button>
               </div>
             </div>
           </React.Fragment>
