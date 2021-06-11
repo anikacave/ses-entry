@@ -1,6 +1,6 @@
 import React from "react";
 import "./MoviePreview.css";
-import { BottomScrollListener } from 'react-bottom-scroll-listener';
+
 
 class MoviePreview extends React.Component {
   constructor(props) {
@@ -8,9 +8,8 @@ class MoviePreview extends React.Component {
     this.state = {
       data: this.props.parentState,
       selectedtitle: null,
-      page: 1
+      page: null
     };
-    this.props.getPage(this.state.page);
     this.props.functionCallFromParent(this.state.selectedtitle);
 
   }
@@ -27,13 +26,6 @@ class MoviePreview extends React.Component {
     this.props.functionCallFromParent(id);
   }
 
-  setPage() {
-    this.setState({
-      page: this.state.page + 1
-    })
-    this.props.getPage();
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -41,7 +33,7 @@ class MoviePreview extends React.Component {
           // <table>
           //   <tbody>
           <div className="holder">
-            {this.state.data.Search.map(id =>
+            {this.state.data.map(id =>
               // <tr className="box" key={id.imdbID} >
               //   <td className="track_name"  >
               <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
@@ -61,7 +53,8 @@ class MoviePreview extends React.Component {
               // </tr>)
             )
             }
-            <BottomScrollListener onBottom={this.setPage()} />;
+            ;
+
           </div>
           //   </tbody>
           // </table>

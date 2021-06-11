@@ -4,6 +4,7 @@ import * as $ from "jquery";
 import Search from "./Search";
 import MoviePreview from "./MoviePreview"
 import MovieDetails from "./MovieDetails"
+import { BottomScrollListener } from 'react-bottom-scroll-listener';
 
 class App extends Component {
   constructor() {
@@ -14,7 +15,9 @@ class App extends Component {
       s_info: null,
       something: "",
       titleInfo: null,
-      movieSelected: false
+      movieSelected: false,
+      bar: "",
+      page: 1
     }
 
   }
@@ -22,15 +25,27 @@ class App extends Component {
   movieReq(title, page) {
     $.ajax({
       // TODO: hardcoded once again, factor out later
-      url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce&page=1",
+      url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce&page=" + page,
       type: "GET",
       success: data => {
         // TODO: error handling
         if (data.Response === "True") {
-          this.setState({
-            s_info: data,
-            movieSelected: false
-          });
+          if (page === 1) {
+            this.setState({
+              s_info: data.Search,
+              movieSelected: false
+            });
+          }
+          else {
+            console.log(data.Search)
+            console.log(this.state.s_info)
+            this.setState({
+              s_info: this.state.s_info.concat(data.Search),
+              movieSelected: false
+            });
+          }
+          console.log(data);
+
         }
         else {
           alert("Invalid Search: Try being more specific or checking your spelling")
@@ -39,6 +54,7 @@ class App extends Component {
       }
     });
   }
+
 
   getIdInfo(id) {
     $.ajax({
@@ -79,13 +95,26 @@ class App extends Component {
   // set state for access
   submitted = (bar) => {
     if (bar) {
-      this.movieReq(bar);
+      this.movieReq(bar, 1);
+      this.setState({
+        bar: bar,
+        page: 1,
+        s_info: null
+      })
     }
 
   }
 
-  getPage = (page) => {
+  getPage = () => {
+    console.log();
 
+    this.setState({
+      page: this.state.page + 1
+    })
+
+    console.log(this.state.page);
+
+    this.movieReq(this.state.bar, this.state.page)
 
   }
 
@@ -109,6 +138,7 @@ class App extends Component {
           {!this.state.movieSelected && (
             <div>
               <MoviePreview parentState={this.state.s_info} functionCallFromParent={this.idCall.bind(this)} getPage={this.getPage.bind(this)} />
+              <BottomScrollListener onBottom={() => this.getPage()} />
             </div>)}
           {this.state.movieSelected && (
             <div>
