@@ -30,12 +30,8 @@ class MoviePreview extends React.Component {
     return (
       <React.Fragment>
         {this.state.data && (
-          // <table>
-          //   <tbody>
           <div className="holder">
             {this.state.data.map(id =>
-              // <tr className="box" key={id.imdbID} >
-              //   <td className="track_name"  >
               <button className="square" id={id.imdbID} key={id.imdbID} onClick={() => this.setSelected(id.imdbID)}>
                 <div className="info">
                   <h1 className="mvd">{id.Title} <br></br> {id.Year}</h1>
@@ -48,18 +44,9 @@ class MoviePreview extends React.Component {
                   />
                 </div>
               </button>
-
-              //   </td>
-              // </tr>)
-            )
-            }
-            ;
-
+            )};
           </div>
-          //   </tbody>
-          // </table>
-        )
-        }
+        )}
       </React.Fragment>
     );
   }

@@ -13,6 +13,15 @@ class MovieDetails extends React.Component {
     this.setState({ info: nextProps.info })
   }
 
+  isValidRender = (comp) => {
+    if (comp === "N/A") {
+      return (" ")
+    }
+    else {
+      return (comp)
+    }
+  }
+
 
   render() {
     return (
@@ -33,21 +42,23 @@ class MovieDetails extends React.Component {
                 />
               </div>
               <div className="mdinfo">
-                <p>{this.state.info.Plot}</p>
-                <p>{this.state.info.Awards}</p>
-                <p>Directed By: {this.state.info.Director}</p>
-                <p>Written By: {this.state.info.Writer}</p>
-                <p>Rated: {this.state.info.Rated}</p>
-                <p>Released: {this.state.info.Released}</p>
-                <p>Genre: {this.state.info.Genre}</p>
-                <p>Box Office: {this.state.info.BoxOffice}</p>
+                <p>{this.isValidRender(this.state.info.Plot)}</p>
+                <p>{this.isValidRender(this.state.info.Awards)}</p>
+                <p>Directed By: {this.isValidRender(this.state.info.Director)}</p>
+                <p>Written By: {this.isValidRender(this.state.info.Writer)}</p>
+                <p>Rated: {this.isValidRender(this.state.info.Rated)}</p>
+                <p>Released: {this.isValidRender(this.state.info.Released)}</p>
+                <p>Genre: {this.isValidRender(this.state.info.Genre)}</p>
+                <p>Box Office: {this.isValidRender(this.state.info.BoxOffice)}</p>
                 <p>RATINGS:</p>
+                {console.log(this.state.info.Ratings)}
                 {this.state.info.Ratings.map(site =>
                   <p key={site.Source}>{site.Source} : {site.Value}</p>)}
               </div>
             </div>
           </React.Fragment>
-        )}
+        )
+        }
       </React.Fragment>
 
 
