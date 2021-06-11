@@ -10,13 +10,13 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // As keys are typed into search bar, change the state of the bar
   handleChange(event) {
     event.preventDefault();
     this.setState({ value: event.target.value });
   }
 
-  // TODO: fix this bc it erases when it shouldnt or.. factor out the "enter"
-  //  key to have mainstream functionality in sending expected request
+  // When the form is submmitted send the value to parent class
   handleSubmit(event) {
     event.preventDefault();
     this.props.submitted(this.state.value);
@@ -28,11 +28,9 @@ class Search extends React.Component {
         {/* SEARCH */}
         <input className="bar" type="text" placeholder="Search Movie Titles..." value={this.state.value} onChange={this.handleChange} />
         <button className="search" onClick={this.handleSubmit}>Search</button>
-
       </form>
     );
   }
-
 }
 
 export default Search;

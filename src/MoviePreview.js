@@ -11,7 +11,6 @@ class MoviePreview extends React.Component {
       page: null
     };
     this.props.functionCallFromParent(this.state.selectedtitle);
-
   }
 
   // TODO: no longer supported fix later
@@ -19,6 +18,7 @@ class MoviePreview extends React.Component {
     this.setState({ data: nextProps.parentState });
   }
 
+  // Passes the selected ID to the parent class when a movie is selected by user
   setSelected(id) {
     this.setState({
       selectedtitle: id

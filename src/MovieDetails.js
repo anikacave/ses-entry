@@ -9,10 +9,12 @@ class MovieDetails extends React.Component {
     };
   }
 
+  // TODO: Manage. Use is deprecated
   componentWillReceiveProps(nextProps) {
     this.setState({ info: nextProps.info })
   }
 
+  // Check if the value exists
   isValidRender = (comp) => {
     if (comp === "N/A") {
       return (" ")
@@ -22,12 +24,9 @@ class MovieDetails extends React.Component {
     }
   }
 
-
   render() {
     return (
-      // Check for null values before rendering
-      console.log(this.state.info),
-
+      // TODO: Remove entire component if N/A and remove null values (map)
       <React.Fragment>
         {this.state.info && (
           <React.Fragment>
@@ -57,15 +56,10 @@ class MovieDetails extends React.Component {
               </div>
             </div>
           </React.Fragment>
-        )
-        }
+        )}
       </React.Fragment>
-
-
     )
   }
-
-
 }
 
 export default MovieDetails

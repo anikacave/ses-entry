@@ -1,20 +1,15 @@
 .layout {
-  /* display: inline-block; */
   display: flex;
 }
-
 
 .imgdiv {
   flex: 1;
   float: left;
   padding: 10px;
-  /* width: 30%; */
 }
 
 .mdinfo {
   flex: 4;
-  /* width: 20px; */
-
   float: right;
 }
 
@@ -23,14 +18,12 @@
 }
 
 @media (max-width: 500px) {
-
   .center{
     font-size: 12px;
   }
   .dimg {
     width: 200px;
   }
-
   .mdinfo{
     font-size: 12px;
   }
@@ -40,7 +33,6 @@
   .center{
     font-size: 10px;
   }
-
   .dimg {
     width: 100px;
   }

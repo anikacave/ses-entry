@@ -19,8 +19,11 @@ class App extends Component {
       bar: "",
       page: 1
     }
-
   }
+
+  // Makes a request to the OMDB api with 
+  // {title}: the name of the movie being searched for
+  // {page}: the page of information that should be queried
   // TODO: factor this out into the search class.. where it belongs
   movieReq(title, page) {
     $.ajax({
@@ -42,26 +45,23 @@ class App extends Component {
               movieSelected: false
             });
           }
-          console.log(data);
-
         }
         else {
           alert("Invalid Search: Try being more specific or checking your spelling")
         }
-
       }
     });
   }
 
-
+  // Request to the api for information on a movie with {id}
+  // REQUIRES: The id of the movie selected is a valid ID
   getIdInfo(id) {
     $.ajax({
       // TODO: hardcoded once again, factor out later
       url: "http://www.omdbapi.com/?i=" + id + "&apikey=3b3549ce",
       type: "GET",
       success: data => {
-        // TODO: some sort of error handling here for invalid responses
-        // however, there should not be a scenario where this makes it difficiult
+        // error handling here should be covered by requires clause
         if (data.Response === "True") {
           this.setState({
             movieSelected: true
@@ -74,23 +74,26 @@ class App extends Component {
     });
   }
 
-
-  // if this is called render page information
+  // Called when a movie is selected from the list.
+  // Sets the state of the movie-id to be that of the users selection
   idCall = (imdbID) => {
     this.setState({
+      // TODO: rename this variable
       something: imdbID
     });
     this.getIdInfo(imdbID);
-    // this.setState
   }
 
+  // Update {movieSelected} to false, which should rerender the search results
+  // Takes user back to their search results
   backToSearch() {
     this.setState({
       movieSelected: false
     })
   }
 
-  // set state for access
+  // Called when the search bar is submitted
+  // Creates a new movie request on the first page of results
   submitted = (bar) => {
     if (bar) {
       this.movieReq(bar, 1);
@@ -100,20 +103,16 @@ class App extends Component {
         s_info: null
       })
     }
-
   }
 
+  // Called when the user reaches the end of their current search query
+  // Updates the page of data showed and creates a new request to the API for
+  // More data 
   getPage = () => {
-    console.log();
-
     this.setState({
       page: this.state.page + 1
     })
-
-    console.log(this.state.page);
-
     this.movieReq(this.state.bar, this.state.page)
-
   }
 
   render() {
