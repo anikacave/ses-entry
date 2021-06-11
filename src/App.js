@@ -37,8 +37,6 @@ class App extends Component {
             });
           }
           else {
-            console.log(data.Search)
-            console.log(this.state.s_info)
             this.setState({
               s_info: this.state.s_info.concat(data.Search),
               movieSelected: false
