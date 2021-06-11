@@ -5,13 +5,12 @@ import Search from "./Search";
 import MoviePreview from "./MoviePreview"
 import MovieDetails from "./MovieDetails"
 import { BottomScrollListener } from 'react-bottom-scroll-listener';
+import { apikey } from "./config.js"
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      // TODO: this is hardcoded u idiot
-      token: "3b3549ce",
       s_info: null,
       something: "",
       titleInfo: null,
@@ -27,8 +26,7 @@ class App extends Component {
   // TODO: factor this out into the search class.. where it belongs
   movieReq(title, page) {
     $.ajax({
-      // TODO: hardcoded once again, factor out later
-      url: "http://www.omdbapi.com/?s=" + title + "&apikey=3b3549ce&page=" + page,
+      url: "http://www.omdbapi.com/?s=" + title + "&" + apikey + "=3b3549ce&page=" + page,
       type: "GET",
       success: data => {
         // TODO: error handling
@@ -57,8 +55,7 @@ class App extends Component {
   // REQUIRES: The id of the movie selected is a valid ID
   getIdInfo(id) {
     $.ajax({
-      // TODO: hardcoded once again, factor out later
-      url: "http://www.omdbapi.com/?i=" + id + "&apikey=3b3549ce",
+      url: "http://www.omdbapi.com/?i=" + id + "&" + apikey + "=3b3549ce",
       type: "GET",
       success: data => {
         // error handling here should be covered by requires clause
